@@ -7,7 +7,7 @@ v8_static_library("rusty_v8") {
   ]
   deps = [
     ":v8",
-    "//build/config:shared_library_deps",
+    "//v8/build/config:shared_library_deps",
   ]
   configs = [ ":rusty_v8_config" ]
 }

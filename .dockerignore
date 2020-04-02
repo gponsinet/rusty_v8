@@ -5,6 +5,9 @@
 /.idea/
 /target/
 
-v8
+./v8/
 .cipd
 .gclient_entry
+
+.git/
+./tools/depot_tools/

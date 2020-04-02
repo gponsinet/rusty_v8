@@ -41,13 +41,13 @@ fn build_v8() {
   env::set_var("PYTHONDONTWRITEBYTECODE", "1");
 
   // git submodule update --init --recursive
-  let libcxx_src = PathBuf::from("buildtools/third_party/libc++/trunk/src");
-  if !libcxx_src.is_dir() {
-    eprintln!(
-      "missing source code. Run 'git submodule update --init --recursive'"
-    );
-    exit(1);
-  }
+  // let libcxx_src = PathBuf::from("buildtools/third_party/libc++/trunk/src");
+  // if !libcxx_src.is_dir() {
+  //   eprintln!(
+  //     "missing source code. Run 'git submodule update --init --recursive'"
+  //   );
+  //   exit(1);
+  // }
 
   if need_gn_ninja_download() {
     download_ninja_gn_binaries();
@@ -72,13 +72,13 @@ fn build_v8() {
     gn_args.push(format!("clang_base_path={:?}", clang_base_path));
   }
 
-  if let Some(p) = env::var_os("SCCACHE") {
-    cc_wrapper(&mut gn_args, &Path::new(&p));
-  } else if let Ok(p) = which("sccache") {
-    cc_wrapper(&mut gn_args, &p);
-  } else {
-    println!("cargo:warning=Not using sccache");
-  }
+  // if let Some(p) = env::var_os("SCCACHE") {
+  //   cc_wrapper(&mut gn_args, &Path::new(&p));
+  // } else if let Ok(p) = which("sccache") {
+  //   cc_wrapper(&mut gn_args, &p);
+  // } else {
+  //   println!("cargo:warning=Not using sccache");
+  // }
 
   if let Ok(args) = env::var("GN_ARGS") {
     for arg in args.split_whitespace() {
